@@ -1,0 +1,290 @@
+@charset "UTF-8";
+/*ПОДКЛЮЧЕНИЕ ШРИФТОВ */
+
+/*Comfortaa*/
+
+@font-face {
+  font-family: "Comfortaa";
+  src: url("assets/fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf") format("truetype");
+}
+
+/*Переменные*/
+
+:root {
+  --main-bg: #1C1C1C;
+  --main-color: #FFFFFF;
+  --title-color: #FFA500;
+  --main-font-size: 18px;
+  --font-familia: 'Comfortaa', cursive;
+
+  /*Светлая тема*/
+  --main-white-bg: #FFFFFF;
+  --main-white-color: #1C1C1C;
+}
+
+/* Свойство для контроля переполнения потока. 
+Включать для нахождения элементов, которые выходят за ширину страницы 
+если появляется горизонтальная прокрутка на странице
+*/
+/* 
+* {
+  outline: solid 1px red;
+} 
+*/
+
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+*:focus, *:active {
+  outline: none;
+}
+
+a:focus, *:active {
+  outline: none;
+}
+
+aside, nav, footer, header, section {
+  display: block;
+}
+
+html {
+  /*плавная прокрутка по якорям*/
+  scroll-behavior: smooth;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  line-height: 1;
+  margin: 0 auto;
+}
+
+button {
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+}
+
+img {
+  vertical-align: top;
+}
+
+input, textarea {
+  font-family: inherit;
+  padding: 0;
+}
+
+input:-internal-autofill-selected {
+  background-color: inherit;
+  color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-style: normal;
+  font-weight: normal;
+  margin-top: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+ul {
+  padding-inline-start: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+ul li {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover, a:visited {
+  text-decoration: none;
+}
+
+p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+
+/*ОСНОВНАЯ СЕТКА*/
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--main-bg);
+  color: var(--main-color);
+  font-family: var(--font-familia);
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--main-font-size);
+  width: 100%;
+}
+
+body.white-theme {
+  background-color: var(--main-white-bg);
+  color: var(--matte-black-color);
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+a {
+  color: var(--main-color);
+}
+
+a.white-theme {
+  color: var(--matte-black-color);
+}
+
+a:hover {
+  color: var(--title-color);
+  transition: 0.5s;
+}
+
+.icon {
+  fill: var(--main-color);
+}
+
+.icon.white-theme {
+  fill: var(--matte-black-color);
+}
+
+.icon:hover {
+  fill: var(--title-color);
+  transition: 1s;
+}
+
+/*HEADER*/
+.header {
+  padding: 40px 0;
+  border-bottom: 5px solid var(--title-color);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo-icon {
+  width: 40px;
+  height: 36px;
+  padding-bottom: 5px;
+}
+
+.header-logo-icon svg {
+  fill: var(--title-color);
+  height: 100%;
+  width: 100%;
+}
+
+.header-logo-title {
+  margin: 0 10px;
+}
+
+.header-search-wrap {
+  position: relative;
+  width: 350px;
+}
+
+.header-search-input {
+  width: 100%;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 25px;
+  outline: none;
+  transition: all 0.30s ease-in-out;
+  border: 1px solid #DDDDDD;
+}
+
+.header-search-icon {
+  position: absolute;
+  cursor: pointer;
+  top: 20%;
+  right: 4%;
+  width: 24px;
+  height: 24px;
+  transition: 1s;
+}
+
+.header-search-icon>.icon {
+  fill: var(--main-bg);
+}
+
+.header-search-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.image-container {
+  padding: 40px;
+  display: grid;
+  justify-content: space-evenly;
+  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+}
+
+.image-wrap {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  border: 1px solid var(--main-color);
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+  transform: scale(1, 1);
+  transition: all 0.4s ease-in-out;
+}
+
+.image-wrap:hover {
+  transform: scale(1.03, 1.03);
+}
+
+.footer {
+  border-top: 5px solid var(--title-color);
+}
+
+.footer-container {
+  padding: 40px;
+}
+
+.footer-item-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-item {
+  font-size: 1.5em;
+}
+
+.footer-link-icon {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+}
+
+.footer-link-icon svg {
+  width: 100%;
+  height: 100%;
+}
