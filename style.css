@@ -136,6 +136,10 @@ body.white-theme {
   color: var(--matte-black-color);
 }
 
+main {
+  position: relative;
+}
+
 .container {
   max-width: 1440px;
   margin: 0 auto;
@@ -230,6 +234,11 @@ a:hover {
   fill: var(--main-bg);
 }
 
+.header-search-icon>.icon:hover {
+  fill: var(--title-color);
+  transition: 1s;
+}
+
 .header-search-icon svg {
   width: 100%;
   height: 100%;
@@ -286,4 +295,20 @@ a:hover {
 .footer-link-icon svg {
   width: 100%;
   height: 100%;
+}
+
+/*Fullscreen container*/
+.fullscreen-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--main-bg);
+  color: var(--main-color);
+  width: 100vw;
+  height: 100%;
+}
+
+.fullscreen-container.white-theme {
+  background-color: var(--main-white-bg);
+  color: var(--main-white-color);
 }
