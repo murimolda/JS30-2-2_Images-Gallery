@@ -22,6 +22,12 @@
   --main-white-color: #1C1C1C;
 }
 
+@media screen and (max-width: 450px) {
+  :root {
+    --main-font-size: 14px;
+  }
+}
+
 /* Свойство для контроля переполнения потока. 
 Включать для нахождения элементов, которые выходят за ширину страницы 
 если появляется горизонтальная прокрутка на странице
@@ -31,7 +37,6 @@
   outline: solid 1px red;
 } 
 */
-
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -115,7 +120,6 @@ p {
   margin-block-end: 0;
 }
 
-
 /*ОСНОВНАЯ СЕТКА*/
 html {
   scroll-behavior: smooth;
@@ -144,6 +148,12 @@ main {
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 40px;
+}
+
+@media screen and (max-width: 450px) {
+  .container {
+    padding: 0 20px;
+  }
 }
 
 a {
@@ -183,7 +193,6 @@ a.white-theme:hover {
   transition: 1s;
 }
 
-
 /*HEADER*/
 .header {
   position: relative;
@@ -198,15 +207,34 @@ a.white-theme:hover {
   justify-content: space-between;
 }
 
+@media screen and (max-width: 850px) {
+  .header-container {
+    flex-direction: column;
+  }
+}
+
 .header-logo {
   display: flex;
   align-items: center;
+}
+
+@media screen and (max-width: 850px) {
+  .header-logo {
+    margin-bottom: 40px;
+  }
 }
 
 .header-logo-icon {
   width: 40px;
   height: 36px;
   padding-bottom: 5px;
+}
+
+@media screen and (max-width: 450px) {
+  .header-logo-icon {
+    width: 34px;
+    height: 30px;
+  }
 }
 
 .header-logo-icon svg {
@@ -222,6 +250,12 @@ a.white-theme:hover {
 .header-search-wrap {
   position: relative;
   width: 350px;
+}
+
+@media screen and (max-width: 850px) {
+  .header-search-wrap {
+    width: 100%;
+  }
 }
 
 .header-search-input {
@@ -258,6 +292,16 @@ a.white-theme:hover {
   height: 100%;
 }
 
+.header-search-input[type="search"]::-webkit-search-cancel-button {
+  position: absolute;
+  cursor: pointer;
+  background-color: var(--main-bg);
+  top: 27%;
+  right: 12%;
+  width: 24px;
+  height: 24px;
+}
+
 .image-container {
   position: relative;
   padding: 40px;
@@ -267,6 +311,24 @@ a.white-theme:hover {
   grid-template-columns: repeat(4, 1fr);
   gap: 1em;
   z-index: 100;
+}
+
+@media screen and (max-width: 850px) {
+  .image-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .image-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .image-container {
+    padding: 40px 20px;
+  }
 }
 
 .image-wrap {
@@ -294,14 +356,32 @@ a.white-theme:hover {
   padding: 40px;
 }
 
+@media screen and (max-width: 450px) {
+  .footer-container {
+    padding: 40px 20px;
+  }
+}
+
 .footer-item-list {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+@media screen and (max-width: 850px) {
+  .footer-item-list {
+    flex-direction: column;
+  }
+}
+
 .footer-item {
   font-size: 1.5em;
+}
+
+@media screen and (max-width: 850px) {
+  .footer-item:not(:last-child) {
+    margin-bottom: 40px;
+  }
 }
 
 .footer-link-icon {
@@ -356,6 +436,12 @@ a.white-theme:hover {
   flex-direction: column;
   width: 65px;
   padding: 10px;
+}
+
+@media screen and (max-width: 1440px) {
+  .fullscreen-buttons {
+    right: 10px;
+  }
 }
 
 .fullscreen-button {

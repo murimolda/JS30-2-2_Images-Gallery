@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchIcon = document.querySelector('.header-search-icon');
     const imageWrap = document.querySelector('.image-container');
 
-
     const apiRequest = () => {
         imageWrap.textContent = "";
         const url = `https://api.unsplash.com/search/photos?query=${searchForm.value}&per_page=20&client_id=44p5ICsqB7rV99h5gLkFVA_fc4PTLn7YKs4j9RD8MGE`;
@@ -104,9 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         galleryCloseButton.addEventListener('click', function () {
             for (let k = fullscreenItems.length - 1; k >= 0; k--) {
-                if (fullscreenItems[k].classList.contains("active") && k !== fullscreenItems.length - 1) {
-                    fullscreenItems[k].classList.remove("active");
-                }
+                fullscreenItems[k].remove();
             }
             fullscreenContainer.classList.remove("active");
         })
@@ -140,9 +137,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     window.addEventListener('load', changeTheme);
-
-
-
 
 });
 
