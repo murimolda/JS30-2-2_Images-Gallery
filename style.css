@@ -159,6 +159,12 @@ a:hover {
   transition: 0.5s;
 }
 
+a.white-theme:hover {
+  color: var(--title-color);
+  transition: 0.5s;
+}
+
+
 .icon {
   fill: var(--main-color);
 }
@@ -172,10 +178,18 @@ a:hover {
   transition: 1s;
 }
 
+.icon.white-theme:hover {
+  fill: var(--title-color);
+  transition: 1s;
+}
+
+
 /*HEADER*/
 .header {
+  position: relative;
   padding: 40px 0;
   border-bottom: 5px solid var(--title-color);
+  z-index: 100;
 }
 
 .header-container {
@@ -245,12 +259,14 @@ a:hover {
 }
 
 .image-container {
+  position: relative;
   padding: 40px;
   display: grid;
   justify-content: space-evenly;
   align-items: center;
   grid-template-columns: repeat(4, 1fr);
   gap: 1em;
+  z-index: 100;
 }
 
 .image-wrap {
@@ -269,7 +285,9 @@ a:hover {
 }
 
 .footer {
+  position: relative;
   border-top: 5px solid var(--title-color);
+  z-index: 100;
 }
 
 .footer-container {
@@ -299,16 +317,92 @@ a:hover {
 
 /*Fullscreen container*/
 .fullscreen-container {
+  display: none;
   position: absolute;
-  top: 0;
   left: 0;
+  top: 0;
+  width: 100%;
+  height: calc(100% + 1000%);
   background-color: var(--main-bg);
-  color: var(--main-color);
-  width: 100vw;
-  height: 100%;
+}
+
+.fullscreen-container.active {
+  display: block;
+  z-index: 1000;
 }
 
 .fullscreen-container.white-theme {
   background-color: var(--main-white-bg);
   color: var(--main-white-color);
+}
+
+.fullscreen-image {
+  height: 100vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin: 20px auto;
+}
+
+.fullscreen-image:first-child {
+  margin-top: 0;
+}
+
+.fullscreen-buttons {
+  position: fixed;
+  right: 3%;
+  top: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+  width: 65px;
+  padding: 10px;
+}
+
+.fullscreen-button {
+  width: 45px;
+  height: 45px;
+  background-color: rgba(28, 28, 28, 0.8);
+  border: 2px solid var(--main-color);
+  border-radius: 50%;
+  padding: 7px;
+  margin: 5px;
+}
+
+.fullscreen-button:hover {
+  border-color: var(--title-color);
+  transition: 1s;
+}
+
+.fullscreen-button.white-theme {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-color: var(--main-white-color);
+}
+
+.fullscreen-button:hover {
+  border-color: var(--title-color);
+  transition: 1s;
+}
+
+.fullscreen-button:hover>.fullscreen-button-icon {
+  fill: var(--title-color);
+  stroke: var(--title-color);
+  transition: 1s;
+}
+
+.fullscreen-button-icon {
+  fill: var(--main-color);
+  stroke: var(--main-color);
+  width: 100%;
+  height: 100%;
+}
+
+.fullscreen-button-icon.white-theme {
+  fill: var(--main-white-color);
+  stroke: var(--main-white-color);
+}
+
+.fullscreen-button-icon:hover {
+  fill: var(--title-color);
+  stroke: var(--title-color);
+  transition: 1s;
 }

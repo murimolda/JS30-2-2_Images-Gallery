@@ -50,17 +50,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // /*fullscreen галерея*/
-    // const fullscreenContainer = document.querySelector('.fullscreen-container');
-
-    // const fullscreenGallery = (data) => {
-    //     console.log('+');
-    //     for (let i = 0; i < data.results.length; i++) {
-    //         let image = document.createElement("div");
-    //         image.className = "image-wrap";
-    //         image.style.backgroundImage = `url(${data.results[i].urls.raw}&w=1366&h=768)`;
-    //         fullscreenContainer.appendChild(image);
-    //     }
-    // }
+    const fullscreenContainer = document.querySelector('.fullscreen-container');
+    const galleryArrowTop = document.querySelector('.fullscreen-arrow-top');
+    const galleryArrowDown = document.querySelector('.fullscreen-arrow-down');
+    const galleryCloseButton = document.querySelector('.fullscreen-gallery');
 
 
     const loadImages = (data) => {
@@ -68,11 +61,55 @@ document.addEventListener("DOMContentLoaded", function () {
             let image = document.createElement("div");
             image.className = "image-wrap";
             image.style.backgroundImage = `url(${data.results[i].urls.raw}&w=1366&h=768)`;
-            image.addEventListener("dblclick", function () {
-                console.log('+');
-            });
             imageWrap.appendChild(image);
         }
+        let imageItems = document.querySelectorAll('.image-wrap');
+        for (let j = 0; j < imageItems.length; j++) {
+            let fullscreenImage = document.createElement("div");
+            fullscreenImage.className = "fullscreen-image";
+            fullscreenImage.style.backgroundImage = imageItems[j].style.backgroundImage;
+            fullscreenContainer.appendChild(fullscreenImage);
+            const fullscreenItems = document.querySelectorAll('.fullscreen-image');
+            imageItems[j].addEventListener("dblclick", function (e) {
+                fullscreenContainer.classList.add("active");
+                fullscreenItems.forEach(element => {
+                    if (element.style.backgroundImage === e.target.style.backgroundImage) {
+                        element.classList.add("active");
+                        element.scrollIntoView();
+                    }
+                });
+            });
+        }
+        const fullscreenItems = document.querySelectorAll('.fullscreen-image');
+        /*перемещение на один слайд вверх по клику на кнопку*/
+        galleryArrowTop.addEventListener('click', function () {
+            for (let k = 0; k < fullscreenItems.length; k++ && k !== 0) {
+                if (fullscreenItems[k].classList.contains("active")) {
+                    fullscreenItems[k - 1].scrollIntoView();
+                    fullscreenItems[k].classList.remove("active");
+                    fullscreenItems[k - 1].classList.add("active");
+
+                }
+            }
+        });
+        /*перемещение на один слайд вниз по клику на кнопку*/
+        galleryArrowDown.addEventListener('click', function () {
+            for (let k = fullscreenItems.length - 1; k >= 0; k--) {
+                if (fullscreenItems[k].classList.contains("active") && k !== fullscreenItems.length - 1) {
+                    fullscreenItems[k + 1].scrollIntoView();
+                    fullscreenItems[k].classList.remove("active");
+                    fullscreenItems[k + 1].classList.add("active");
+                }
+            }
+        });
+        galleryCloseButton.addEventListener('click', function () {
+            for (let k = fullscreenItems.length - 1; k >= 0; k--) {
+                if (fullscreenItems[k].classList.contains("active") && k !== fullscreenItems.length - 1) {
+                    fullscreenItems[k].classList.remove("active");
+                }
+            }
+            fullscreenContainer.classList.remove("active");
+        })
     }
 
     /*загрузка изображений по клику Enter*/
