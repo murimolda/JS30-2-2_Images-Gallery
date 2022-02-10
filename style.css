@@ -271,7 +271,8 @@ a.white-theme:hover {
 .header-search-icon {
   position: absolute;
   cursor: pointer;
-  top: 20%;
+  top: 50%;
+  transform: translate(0, -50%);
   right: 4%;
   width: 24px;
   height: 24px;
@@ -293,13 +294,15 @@ a.white-theme:hover {
 }
 
 .header-search-input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
   position: absolute;
   cursor: pointer;
-  background-color: var(--main-bg);
-  top: 27%;
+  background: url(assets/svg/close.svg);
+  top: 50%;
+  transform: translate(0, -50%);
   right: 12%;
-  width: 24px;
-  height: 24px;
+  width: 10px;
+  height: 10px;
 }
 
 .image-container {
