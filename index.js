@@ -33,7 +33,9 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch(error => console.log(error));
     }
-    /*Загрузка темы "горы" при открытии страницы. Закостылила, конечно, но пока не разобралась, как сделать изящней*/
+    /*Загрузка темы "горы" при открытии страницы. 
+    Закостылила, конечно, но пока не разобралась 
+    в этой теме достаточно для того, чтобы сделать изящней :)*/
     window.addEventListener('load', () => {
         imageWrap.textContent = "";
         const url = `https://api.unsplash.com/search/photos?query=mountains&per_page=20&client_id=44p5ICsqB7rV99h5gLkFVA_fc4PTLn7YKs4j9RD8MGE`;
@@ -68,6 +70,8 @@ document.addEventListener("DOMContentLoaded", function () {
             fullscreenImage.className = "fullscreen-image";
             fullscreenImage.style.backgroundImage = imageItems[j].style.backgroundImage;
             fullscreenContainer.appendChild(fullscreenImage);
+
+            /*открытие галереи на том изображении, на котором произошел клик*/
             const fullscreenItems = document.querySelectorAll('.fullscreen-image');
             imageItems[j].addEventListener("dblclick", function (e) {
                 fullscreenContainer.classList.add("active");
@@ -101,10 +105,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         });
+        const header = document.querySelector('.header');
         galleryCloseButton.addEventListener('click', function () {
-            for (let k = fullscreenItems.length - 1; k >= 0; k--) {
-                fullscreenItems[k].remove();
-            }
+            header.scrollIntoView();
             fullscreenContainer.classList.remove("active");
         })
     }
@@ -113,11 +116,19 @@ document.addEventListener("DOMContentLoaded", function () {
     searchForm.addEventListener("keyup", (event) => {
         if (event.key === "Enter")
             apiRequest();
+        const fullscreenItems = document.querySelectorAll('.fullscreen-image');
+        for (let k = fullscreenItems.length - 1; k >= 0; k--) {
+            fullscreenItems[k].remove();
+        }
     });
 
     /*загрузка изображений по клику на иконку поиска*/
     searchIcon.addEventListener("click", () => {
         apiRequest();
+        const fullscreenItems = document.querySelectorAll('.fullscreen-image');
+        for (let k = fullscreenItems.length - 1; k >= 0; k--) {
+            fullscreenItems[k].remove();
+        }
     });
 
     /*Функция День/Ночь, меняет оформление страницы в зависимости от времени суток*/
