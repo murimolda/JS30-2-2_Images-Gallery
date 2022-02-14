@@ -114,11 +114,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /*загрузка изображений по клику Enter*/
     searchForm.addEventListener("keyup", (event) => {
-        if (event.key === "Enter")
+        if (event.key === "Enter") {
             apiRequest();
-        const fullscreenItems = document.querySelectorAll('.fullscreen-image');
-        for (let k = fullscreenItems.length - 1; k >= 0; k--) {
-            fullscreenItems[k].remove();
+            const fullscreenItems = document.querySelectorAll('.fullscreen-image');
+            for (let k = fullscreenItems.length - 1; k >= 0; k--) {
+                fullscreenItems[k].remove();
+            }
+
         }
     });
 
